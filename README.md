@@ -1,26 +1,26 @@
-# Project Description
+# 📝 Project Description
 
 Lorem Ipsum
 
 ---
 
-# Methodology
+# 🔍 Methodology
 
 Lorem Ipsum
 
 ---
 
-# Installation & Usage
+# 🚀 Installation & Usage
 
 - Lorem
 - Ipsum
 
 # Project Structure
 
-# Contributors
+# ✨ Contributors
 
 Team 5:
 
-Guranda Jikia
-Ketevan Davreshidze
-Aleksandra Shalibashvili
+- Guranda Jikia
+- Ketevan Davreshidze
+- Aleksandra Shalibashvili
