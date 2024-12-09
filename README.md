@@ -15,7 +15,9 @@ Lorem Ipsum
 - Lorem
 - Ipsum
 
-# Project Structure
+# 📁 Project Structure
+
+Lorem ipsum dolor sit ame
 
 # ✨ Contributors
 
