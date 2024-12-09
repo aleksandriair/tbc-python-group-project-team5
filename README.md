@@ -1,25 +1,25 @@
-# 📝 Project Description
+## 📝 Project Description
 
 Lorem Ipsum
 
 ---
 
-# 🔍 Methodology
+## 🔍 Methodology
 
 Lorem Ipsum
 
 ---
 
-# 🚀 Installation & Usage
+## 🚀 Installation & Usage
 
 - Lorem
 - Ipsum
 
-# 📁 Project Structure
+## 📁 Project Structure
 
 Lorem ipsum dolor sit ame
 
-# ✨ Contributors
+## ✨ Contributors
 
 Team 5:
 
