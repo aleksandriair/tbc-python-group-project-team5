@@ -1,16 +1,26 @@
-# ამოცანის აღწერა
+# Project Description
 
 Lorem Ipsum
 
 ---
 
-# შერჩეული მეთოდები
+# Methodology
 
 Lorem Ipsum
 
 ---
 
-# როგორ უნდა გაუშვათ კოდი:
+# Installation & Usage
 
 - Lorem
 - Ipsum
+
+# Project Structure
+
+# Contributors
+
+Team 5:
+
+Guranda Jikia
+Ketevan Davreshidze
+Aleksandra Shalibashvili
