@@ -21,8 +21,18 @@ class Deck:
          shuffle(self.cards)
     def deal_cards(self,players):
         for player in players:
+            player.hand.clear() 
             for _ in range(5):
                player.hand.append(self.cards.pop())
+    def replace_card(self, player, old_card_index):
+        if 0 <= old_card_index < len(player.hand):
+            old_card = player.hand.pop(old_card_index)
+            self.cards.append(old_card)
+            self.shuffle()
+            new_card = self.cards.pop()
+            player.hand.append(new_card)
+        else:
+            print(f"Invalid card index: {old_card_index}")
 
 class Player:
     def __init__ (self,name):
@@ -37,6 +47,8 @@ class Player:
 
     def get_value_count(self):
         return Counter(card.value for card in self.hand)
+    def replace_card(self, index, deck):
+        deck.replace_card(self, index)
 
 
 class GameRules:
@@ -102,17 +114,51 @@ class GameRules:
         else:
             self.winner = None
 
+class Game:
+    def __init__(self, players):
+        self.players = players
+        self.deck = Deck()
+        self.game_rules = GameRules()
 
+    def play_round(self):
+        self.deck.generate_deck()
+        self.deck.shuffle()
+        for player in list(self.players):
+            choice = input(f"{player.name}, do you want to replace a card? (yes/no): ").strip().lower()
+            if choice == "yes":
+                try:
+                    index = int(input(f"Please enter the index from [0-4] of the card you want to replace: "))
+                    player.replace_card(index, self.deck)
+                except ValueError:
+                    print("Invalid input. Skipping replacement.")
+        points = {player.name: player.get_points(self.game_rules) for player in self.players}
+        print("\nPoints after this round:")
+        for name, point in points.items():
+            print(f"{name}: {point}")
+
+        loser = min(self.players, key=lambda p: p.get_points(self.game_rules))
+        print(f"\n{loser.name} is eliminated")
+        self.players.remove(loser)
+
+        if len(self.players) > 1:
+            print("\nDealing 5 new cards to remaining players:", [player.name for player in self.players])
+            self.deck.deal_cards(self.players) 
+            for player in self.players:
+                print(f"\n{player.name}'s hand after new cards: {[str(card) for card in player.hand]}")
+
+    def start_game(self):
+        while len(self.players) > 1:
+            self.play_round()
+        
 def main():
     player1 = Player("Player 1")
     player2 = Player("Player 2")
     player3 = Player("Player 3")
-
+    game = Game([player1, player2, player3])
     deck = Deck()
     deck.generate_deck()
     deck.shuffle()
     deck.deal_cards([player1, player2, player3])
-
     game_rules = GameRules()
 
     for player in [player1, player2, player3]:
@@ -120,6 +166,7 @@ def main():
         print(f"{player.name}'s hand: {[str(card) for card in player.hand]}")
         print(f"{player.name}'s points: {points}")
 
+    game.start_game()
     game_rules.determine_winner(player1, player2, player3)
     if game_rules.winner:
         print(f"\nThe winner is {game_rules.winner.name}")
