@@ -194,10 +194,6 @@ class Game:
             print("\nDealing 5 new cards to remaining players:")
             self.deck.deal_cards(self.players) 
             
-        
-
-        
-
     def start_game(self):
         while len(self.players) > 1:
             self.play_round()
