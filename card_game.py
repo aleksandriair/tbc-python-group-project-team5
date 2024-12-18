@@ -177,6 +177,8 @@ class Game:
                 player.replace_card(index, self.deck)
                 print(f"After replacement: {player.display_hand()}")
 
+        
+
         print("\nFinal hands and points for this round:")
         for player in self.players:
             points = player.get_points(self.game_rules)
@@ -185,9 +187,13 @@ class Game:
         loser = min(self.players, key=lambda p: p.get_points(self.game_rules))
         print(f"\n{loser.name} is eliminated")
         self.players.remove(loser)
-
         self.round_number += 1
-
+        
+        
+        if len(self.players) > 1:
+            print("\nDealing 5 new cards to remaining players:")
+            self.deck.deal_cards(self.players) 
+            
     def start_game(self):
         while len(self.players) > 1:
             self.play_round()
@@ -213,4 +219,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main() 
