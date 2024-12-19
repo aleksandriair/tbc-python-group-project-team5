@@ -18,9 +18,10 @@ class Deck:
     def generate_deck(self):
         suits = ["S", "H", "D", "C"]
         values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'A', 'J', 'Q', 'K']
-        for suit in suits:
-            for value in values:
-                self.cards.append(Card(suit, value))
+        for _ in range(4):
+            for suit in suits:
+                for value in values:
+                    self.cards.append(Card(suit, value))
 
     def shuffle(self):
         shuffle(self.cards)
